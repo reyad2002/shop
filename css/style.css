@@ -443,6 +443,14 @@ nav {
     padding: .4rem .1rem;
     border-radius: 10px;
     color: black;
+    width: 60px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: 2px solid #222;
+    border-radius: 8px;
+    text-align: center;
+    appearance: textfield;
+    transition: all 0.3s ease;
 }
 
 .lastSec button {
