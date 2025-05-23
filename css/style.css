@@ -731,12 +731,13 @@ nav {
   }
   .most-popular-item .img{
     width: 100%;
-    height: 200px;
+    height: 250px;
     background-color: #fff;
   }
   .most-popular-item .img img{
     width: 100%;
     height: 100%;
+    border-radius: 20px;
     /* object-fit: cover; */
   }
   .lastSec-popular{
@@ -800,3 +801,35 @@ nav {
     padding: 50px 50px;
    }
 }
+
+/* //////////// */
+.banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    overflow: hidden;
+  }
+  .banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .banner .content {
+    position: relative;
+    z-index: 1;
+  }
+  .banner-lg {
+    height: 400px;
+    background-image: url('../img/banner-ad-1.jpg');
+  }
+  .banner-sm {
+    height: 190px;
+  }
+  .banner-sm.combo {
+    background-image: url('../img/banner-ad-2.jpg');
+  }
+  .banner-sm.coupons {
+    background-image: url('../img/banner-ad-3.jpg');
+  }
