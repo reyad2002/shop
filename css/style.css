@@ -833,3 +833,10 @@ nav {
   .banner-sm.coupons {
     background-image: url('../img/banner-ad-3.jpg');
   }
+  /* ////////////// */
+  .badge-custom {
+    background-color: #fdf8e4;
+    color: #333;
+    font-size: 0.95rem;
+    padding: 0.5em 0.75em;
+  }
