@@ -21,6 +21,7 @@ nav {
     border-radius: 10px;
     text-decoration: none;
     z-index: 2000;
+    display: none;
 }
 
 #AdminLink {

@@ -30,6 +30,14 @@ document.addEventListener('keydown', function (e) {
         window.location.href = "Admin.html";
     }
 });
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let submit = document.getElementById("submit");
+submit.addEventListener("click", () => {
+    if(name.value.toLowerCase() ==="admin" && email.value.toLowerCase() === "admin@gmail.com"){
+        window.location.href = "Admin.html";
+    }
+})
 // ////////////////////////////////////////////////
 // let productName = document.getElementById("productName");
 // let productPrice = document.getElementById("productPrice");
