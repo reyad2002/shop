@@ -21,76 +21,86 @@ PrevBut.addEventListener("click", () => {
 
 
 // ///////////////////////////////////////////////
-
+// Try to load products from localStorage; otherwise use defaults
+let products = JSON.parse(localStorage.getItem("products")) || [
+    { id:1,  name:"product name", price:"500", image:"img/product-thumb-1.png", discount:"30", star:false },
+    { id:2,  name:"product name", price:"250", image:"img/product-thumb-2.png", discount:"10", star:false },
+    /* … etc … */
+  ];
+  function saveProducts() {
+    localStorage.setItem("products", JSON.stringify(products));
+  }  
+  
+ 
 // /////////////////////////////////////////////////////
 
 
 
-let products = [{
-    id: 1,
-    name: "product name",
-    price: "500",
-    image: "img/product-thumb-1.png",
-    discount: "30",
-    star: false,
-},
-{
-    id: 2,
-    name: "product name",
-    price: "250",
-    image: "img/product-thumb-2.png",
-    discount: "10",
-    star: false,
-},
-{
-    id: 3,
-    name: "product name",
-    price: "950",
-    image: "img/product-thumb-3.png",
-    discount: "33",
-    star: false,
-},
-{
-    id: 4,
-    name: "product name",
-    price: "670",
-    image: "img/product-thumb-4.png",
-    discount: "40",
-    star: false,
-},
-{
-    id: 5,
-    name: "product name",
-    price: "180",
-    image: "img/product-thumb-5.png",
-    discount: "20",
-    star: true,
-},
-{
-    id: 6,
-    name: "product name",
-    price: "830",
-    image: "img/product-thumb-6.png",
-    discount: "25",
-    star: true,
-},
-{
-    id: 7,
-    name: "product name",
-    price: "380",
-    image: "img/product-thumb-1.png",
-    discount: "70",
-    star: true,
-},
-{
-    id: 8,
-    name: "product name",
-    price: "670",
-    image: "img/product-thumb-6.png",
-    discount: "60",
-    star: true,
-},
-]
+// let products = [{
+//     id: 1,
+//     name: "product name",
+//     price: "500",
+//     image: "img/product-thumb-1.png",
+//     discount: "30",
+//     star: false,
+// },
+// {
+//     id: 2,
+//     name: "product name",
+//     price: "250",
+//     image: "img/product-thumb-2.png",
+//     discount: "10",
+//     star: false,
+// },
+// {
+//     id: 3,
+//     name: "product name",
+//     price: "950",
+//     image: "img/product-thumb-3.png",
+//     discount: "33",
+//     star: false,
+// },
+// {
+//     id: 4,
+//     name: "product name",
+//     price: "670",
+//     image: "img/product-thumb-4.png",
+//     discount: "40",
+//     star: false,
+// },
+// {
+//     id: 5,
+//     name: "product name",
+//     price: "180",
+//     image: "img/product-thumb-5.png",
+//     discount: "20",
+//     star: true,
+// },
+// {
+//     id: 6,
+//     name: "product name",
+//     price: "830",
+//     image: "img/product-thumb-6.png",
+//     discount: "25",
+//     star: true,
+// },
+// {
+//     id: 7,
+//     name: "product name",
+//     price: "380",
+//     image: "img/product-thumb-1.png",
+//     discount: "70",
+//     star: true,
+// },
+// {
+//     id: 8,
+//     name: "product name",
+//     price: "670",
+//     image: "img/product-thumb-6.png",
+//     discount: "60",
+//     star: true,
+// },
+// ]
 let star = [
     {
         id: 8,
@@ -164,6 +174,7 @@ function createProd() {
     })
 }
 function createStar() {
+    
     document.getElementById("most-popular-inner").innerHTML = ""
     star.map((item, index) => {
         discountPrice = item.price - (item.price * item.discount / 100)
@@ -218,12 +229,14 @@ addProductBtn.addEventListener("click", (event) => {
         discount: productDiscount.value
     }
     products.push(product)
+    localStorage.setItem("products", JSON.stringify(products))
     Swal.fire({
         title: "Product Added Successfully!",
         icon: "success",
         draggable: true
     });
     // newProducts.push(product)
+    saveProducts();          // ← save
     createProd()
     AddToManager()
     productName.value = ""
@@ -320,7 +333,7 @@ function starProduct(index) {
         star.push(products[index])
     }
     products[index].star = !products[index].star
-
+    saveProducts();          // ← save
     createStar()
     AddToManager()
 }
@@ -329,6 +342,7 @@ AddToManager()
 // delete products
 function deleteProduct(index) {
     products.splice(index, 1)
+    saveProducts();          // ← save
     AddToManager()
     createProd()
 }
@@ -355,6 +369,7 @@ editProductBtn.addEventListener("click", (event) => {
         discount: productDiscount.value
     }
     products[index] = product
+    saveProducts();          // ← save
     AddToManager()
     createProd()
     addProductBtn.style.display = "block"
