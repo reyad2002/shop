@@ -91,6 +91,12 @@ nav {
     object-fit: cover;
     border-radius: 10px;
 }
+/* .infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
 .item-add .infos{
     width: 60%;
 }

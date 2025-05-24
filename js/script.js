@@ -25,58 +25,76 @@ PrevBut.addEventListener("click", () => {
 // /////////////////////////////////////////////////////
 
 
+
 let products = [{
+    id: 1,
     name: "product name",
     price: "500",
     image: "img/product-thumb-1.png",
     discount: "30",
+    star: false,
 },
 {
+    id: 2,
     name: "product name",
     price: "250",
     image: "img/product-thumb-2.png",
     discount: "10",
+    star: false,
 },
 {
+    id: 3,
     name: "product name",
     price: "950",
     image: "img/product-thumb-3.png",
     discount: "33",
+    star: false,
 },
 {
+    id: 4,
     name: "product name",
     price: "670",
     image: "img/product-thumb-4.png",
     discount: "40",
+    star: false,
 },
 {
+    id: 5,
     name: "product name",
     price: "180",
     image: "img/product-thumb-5.png",
     discount: "20",
+    star: false,
 },
 {
+    id: 6,
     name: "product name",
     price: "830",
     image: "img/product-thumb-6.png",
     discount: "25",
+    star: false,
 },
 {
+    id: 7,
     name: "product name",
     price: "380",
     image: "img/product-thumb-1.png",
     discount: "70",
+    star: false,
 },
 {
+    id: 8,
     name: "product name",
     price: "670",
     image: "img/product-thumb-6.png",
     discount: "60",
+    star: false,
 },
 ]
-// let newProducts = [{
+let star = [
 
-// }]
+]
+
 function createProd() {
     document.getElementById("con5-allItems").innerHTML = ""
     products.map((item, index) => {
@@ -114,8 +132,45 @@ function createProd() {
     </div>  `
     })
 }
-createProd()
+function createStar() {
+    document.getElementById("most-popular-inner").innerHTML = ""
+    star.map((item, index) => {
+        discountPrice = item.price - (item.price * item.discount / 100)
+        // console.log(item,index)
+        document.getElementById("most-popular-inner").innerHTML += `
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+        <div class="con5-inner ">
+            <div class="img">
+                <img src="${item.image}" alt="" loading="lazy">
+            </div>
+            <div class="con5-infos">
+                <h4>${item.name}</h4>
+                <span>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span>(20)</span>
+                </span>
+                <div class="price">
+                    <p class="dis"><del> ${item.price}</del></p>
+                    <p class="mainPrice">${discountPrice}</p>
+                    <p class="offer">${item.discount}% Off</p>
+                </div>
+                <div class="lastSec">
+                    <input type="number" value="1">
+                    <button>Add To Cart</button>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
 
+            </div>
+        </div>
+    </div>  `
+    })
+}
+createProd()
+createStar()
 let productName = document.getElementById("productName")
 let productPrice = document.getElementById("productPrice")
 let productImage = document.getElementById("productImage")
@@ -136,7 +191,7 @@ addProductBtn.addEventListener("click", (event) => {
         title: "Product Added Successfully!",
         icon: "success",
         draggable: true
-      });
+    });
     // newProducts.push(product)
     createProd()
     AddToManager()
@@ -199,24 +254,44 @@ closeManager.addEventListener("click", () => {
 function AddToManager() {
     document.querySelector(".manager-content").innerHTML = ""
     products.map((item, index) => {
+        let star = ""
+        if (item.star === true) {
+            star = `<button class="btn btn-warning" onclick="starProduct(${index})" ><i class="fa-solid fa-star"></i></button>`
+        } else {
+            star = `<button class="btn btn-warning" onclick="starProduct(${index})" ><i class="fa-regular fa-star"></i></button>`
+        }
         let discountPrice = item.price - (item.price * item.discount / 100)
         document.querySelector(".manager-content").innerHTML += `
         <div class="item-add">
-        <div class="img"><img src="${item.image}" alt=""></div>
+        <div class="img"><img src="${item.image}" alt="">
+        
+        </div>
         
         <div class="infos">
-            <h4>${item.name}</h4>
-            <p>Price:${item.price}</p>
-            <p>Discount:${item.discount}%</p>
-            <p>Final Price:${discountPrice}</p>
-            <div class="controler">
-                <button onclick="deleteProduct(${index})" class="btn btn-danger">Delete</button>
-                <button onclick="editProduct(${index})" class="btn btn-primary">Edit</button>
-            </div>
+        <h4>${item.name}</h4>
+        <p>Price:${item.price}</p>
+        <p>Discount:${item.discount}%</p>
+        <p>Final Price:${discountPrice}</p>
+        <div class="controler">
+        <button onclick="deleteProduct(${index})" class="btn btn-danger">Delete</button>
+        <button onclick="editProduct(${index})" class="btn btn-primary">Edit</button>
+        ${star}
+        </div>
         </div>
     </div>`
 
     })
+}
+function starProduct(index) {
+    if (products[index].star === true) {
+        star.splice(star.indexOf(products[index]), 1)
+    } else {
+        star.push(products[index])
+    }
+    products[index].star = !products[index].star
+
+    createStar()
+    AddToManager()
 }
 AddToManager()
 // //////////////////////////////
