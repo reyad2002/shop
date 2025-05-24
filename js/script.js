@@ -21,39 +21,36 @@ PrevBut.addEventListener("click", () => {
 
 
 // ///////////////////////////////////////////////
+let addProductForm = document.getElementById("addProductForm")
+
 document.addEventListener('keydown', function (e) {
     // Normalize the key for lowercase
     const key = e.key.toLowerCase();
 
     if (e.ctrlKey && key === 'a') {
-        e.preventDefault();               // stop the browser’s default Ctrl+G action
-        window.location.href = "Admin.html";
+        e.preventDefault();
+        addProductForm.style.display = "flex";
     }
 });
+document.addEventListener('keydown', function (e) {
+    // Normalize the key for lowercase
+    const key = e.key.toLowerCase();
+
+    if (e.ctrlKey && key === 'z') {
+        e.preventDefault();
+        addProductForm.style.display = "none";
+    }
+});
+// /////////////////////////////////////////////////////
 let name = document.getElementById("name");
 let email = document.getElementById("email");
 let submit = document.getElementById("submit");
 submit.addEventListener("click", () => {
-    if(name.value.toLowerCase() ==="admin" && email.value.toLowerCase() === "admin@gmail.com"){
-        window.location.href = "Admin.html";
+    if (name.value.toLowerCase() === "admin" && email.value.toLowerCase() === "admin@gmail.com") {
+        addProductForm.style.display = "flex";
+
     }
 })
-// ////////////////////////////////////////////////
-// let productName = document.getElementById("productName");
-// let productPrice = document.getElementById("productPrice");
-// let productDiscount = document.getElementById("productDiscount");
-// let productDescription = document.getElementById("productDescription");
-// let productImage = document.getElementById("productImage");
-// let productStock = document.getElementById("productStock");
-// let productSubmit = document.getElementById("productSubmit");
-// admin.js
-// 1) Grab your elements
-const productName     = document.getElementById("productName");
-const productPrice    = document.getElementById("productPrice");
-const productDiscount = document.getElementById("productDiscount");
-const productImage    = document.getElementById("productImage");
-const productSubmit   = document.getElementById("productSubmit");
-
 
 
 let products = [{
@@ -104,11 +101,13 @@ let products = [{
     image: "img/product-thumb-6.png",
     discount: "60",
 },
-
-
 ]
+// let newProducts = [{
+
+// }]
 function createProd() {
-    products.map((item,index)=>{
+    document.getElementById("con5-allItems").innerHTML = ""
+    products.map((item, index) => {
         discountPrice = item.price - (item.price * item.discount / 100)
         // console.log(item,index)
         document.getElementById("con5-allItems").innerHTML += `
@@ -145,26 +144,69 @@ function createProd() {
 }
 createProd()
 
+let productName = document.getElementById("productName")
+let productPrice = document.getElementById("productPrice")
+let productImage = document.getElementById("productImage")
+let productDiscount = document.getElementById("productDiscount")
+let addProductBtn = document.getElementById("addProductBtn")
+
+addProductBtn.addEventListener("click", (event) => {
+    event.preventDefault()
+    // console.log("reyad")
+    let product = {
+        name: productName.value,
+        price: productPrice.value,
+        image: productImage.value,
+        discount: productDiscount.value
+    }
+    products.push(product)
+    // newProducts.push(product)
+    createProd()
+    createManager()
+    productName.value = ""
+    productPrice.value = ""
+    productImage.value = ""
+    productDiscount.value = ""
 
 
-//   productSubmit.addEventListener("click", (e) => {
-//     e.preventDefault();
-  
-//     const product = {
-//       name:     productName.value,
-//       price:    productPrice.value,
-//       discount: productDiscount.value,
-//       image:    productImage.value,
-//     };
-  
-//     console.log("New product:", product);
-//     products.push(product);
-  
-//     productName.value     = "";
-//     productPrice.value    = "";
-//     productDiscount.value = "";
-//     productImage.value    = "";
-  
-//     createProd();
-//   });
-  
+})
+// /////////////////////////////////////
+closeForm.addEventListener("click", () => {
+    addProductForm.style.display = "none"
+})
+
+document.getElementById("manager").addEventListener("click", () => {
+    document.querySelector(".manager").style.display = "block"
+
+})
+// //////////////////////////////////////////
+// add products to the manager
+
+
+function createManager() {
+    document.querySelector(".manager-content").innerHTML = ""
+    products.map((item, index) => {
+        let discountPrice = item.price - (item.price * item.discount / 100)
+        document.querySelector(".manager-content").innerHTML += `
+        <div class="item-add">
+        <div class="img"><img src="${item.image}" alt=""></div>
+        
+        <div class="infos">
+            <h4>${item.name}</h4>
+            <p>Price:${item.price}</p>
+            <p>Discount:${item.discount}%</p>
+            <p>Final Price:${discountPrice}</p>
+            <div class="controler">
+                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-primary">Edit</button>
+            </div>
+        </div>
+    </div>`
+
+    })
+}
+createManager()
+// //////////////////////////////
+closeManager.addEventListener("click", () => {
+    document.querySelector(".manager").style.display = "none"
+})

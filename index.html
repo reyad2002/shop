@@ -13,9 +13,51 @@
 </head>
 
 <body>
-    <div class="admin">
+    <!-- <div class="admin">
         <a id="AdminLink" href="Admin.html">Admin</a>
+    </div> -->
+    <div class="addProductForm" id="addProductForm">
+     
+        <form action="" class="d-flex flex-column gap-3">
+            <div class="head d-flex justify-content-between">
+                <h2>Add Product</h2>
+                <h3 id="manager" class="btn btn-dark w-25"><i class="fa-solid fa-user"></i>   Manager</h3>
+                <h3 id="closeForm" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></h3>
+
+            </div>
+            <input id="productName" type="text" placeholder="Product Name" class="form-control">
+            <input id="productPrice" type="number" placeholder="Product Price" class="form-control">
+            <input id="productImage" type="file" placeholder="Product Image" class="form-control">
+            <input id="productDiscount" type="number" placeholder="Product Discount" class="form-control">
+            <button id="addProductBtn" class="btn btn-primary" type="submit" class="">Add Product</button>
+        </form>
+
+        <div class="manager">
+            <div class="header   ">
+                <h2>Manage Products</h2>
+                <h3 id="closeManager" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></h3>
+            </div>
+
+            <hr/>
+            <div class="manager-content">
+                <!-- <div class="item-add">
+                    <div class="img"><img src="img/product-thumb-1.png" alt=""></div>
+                    <div class="infos">
+                        <h4>Product Name</h4>
+                        <p>Product Price</p>
+                        <p>Product Discount</p>
+                        <div class="controler">
+                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+          
+        </div>
     </div>
+    <!-- ////////////////////// -->
+
     <div class="sec-1">
         <div class="overlay"></div>
 
