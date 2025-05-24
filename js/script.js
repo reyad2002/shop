@@ -134,7 +134,7 @@ addProductBtn.addEventListener("click", (event) => {
     products.push(product)
     // newProducts.push(product)
     createProd()
-    createManager()
+    AddToManager()
     productName.value = ""
     productPrice.value = ""
     productImage.value = ""
@@ -193,7 +193,7 @@ closeManager.addEventListener("click", () => {
 // add products to the manager
 
 
-function createManager() {
+function AddToManager() {
     document.querySelector(".manager-content").innerHTML = ""
     products.map((item, index) => {
         let discountPrice = item.price - (item.price * item.discount / 100)
@@ -215,8 +215,5 @@ function createManager() {
 
     })
 }
-createManager()
+AddToManager()
 // //////////////////////////////
-
-// ////////////////////////////////
-// delete products
