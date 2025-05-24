@@ -11,23 +11,10 @@ nav {
     border-bottom: 1px solid #000000;
 }
 
-/* .admin {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #2c9a00;
-    color: #fff;
-    padding: .5rem 1rem;
-    border-radius: 10px;
-    text-decoration: none;
-    z-index: 2000;
-    display: none;
-}
-#AdminLink {
-    text-decoration: none;
-    color: #fff;
-} */
 
+#editProductBtn{
+    display: none;
+}   
 .addProductForm{
     position: fixed;
     top: 0;
@@ -38,7 +25,7 @@ nav {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 20;
     column-gap: 2rem;
 }
 .addProductForm form{

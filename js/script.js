@@ -132,6 +132,11 @@ addProductBtn.addEventListener("click", (event) => {
         discount: productDiscount.value
     }
     products.push(product)
+    Swal.fire({
+        title: "Product Added Successfully!",
+        icon: "success",
+        draggable: true
+      });
     // newProducts.push(product)
     createProd()
     AddToManager()
@@ -191,8 +196,6 @@ closeManager.addEventListener("click", () => {
 })
 // //////////////////////////////////////////
 // add products to the manager
-
-
 function AddToManager() {
     document.querySelector(".manager-content").innerHTML = ""
     products.map((item, index) => {
@@ -207,8 +210,8 @@ function AddToManager() {
             <p>Discount:${item.discount}%</p>
             <p>Final Price:${discountPrice}</p>
             <div class="controler">
-                <button class="btn btn-danger">Delete</button>
-                <button class="btn btn-primary">Edit</button>
+                <button onclick="deleteProduct(${index})" class="btn btn-danger">Delete</button>
+                <button onclick="editProduct(${index})" class="btn btn-primary">Edit</button>
             </div>
         </div>
     </div>`
@@ -217,3 +220,45 @@ function AddToManager() {
 }
 AddToManager()
 // //////////////////////////////
+// delete products
+function deleteProduct(index) {
+    products.splice(index, 1)
+    AddToManager()
+    createProd()
+}
+// /////////////////////////////
+// edit products
+function editProduct(index) {
+    addProductBtn.style.display = "none"
+    editProductBtn.style.display = "block"
+    productName.value = products[index].name
+    productPrice.value = products[index].price
+    // productImage.value = products[index].image
+    productDiscount.value = products[index].discount
+    editProductBtn.dataset.index = index
+}
+let editProductBtn = document.getElementById("editProductBtn")
+editProductBtn.style.display = "none"
+editProductBtn.addEventListener("click", (event) => {
+    event.preventDefault()
+    let index = event.target.dataset.index
+    let product = {
+        name: productName.value,
+        price: productPrice.value,
+        image: productImage.value,
+        discount: productDiscount.value
+    }
+    products[index] = product
+    AddToManager()
+    createProd()
+    addProductBtn.style.display = "block"
+    editProductBtn.style.display = "none"
+    productName.value = ""
+    productPrice.value = ""
+    productImage.value = ""
+    productDiscount.value = ""
+    addProductBtn.textContent = "Add Product"
+    addProductBtn.dataset.index = ""
+})
+editProductBtn.style.display = "none"
+

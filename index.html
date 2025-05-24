@@ -27,6 +27,7 @@
             <input id="productImage" type="file" placeholder="Product Image" class="form-control">
             <input id="productDiscount" type="number" placeholder="Product Discount" class="form-control">
             <button id="addProductBtn" class="btn btn-primary" type="submit" class="">Add Product</button>
+            <button id="editProductBtn" class="btn btn-primary" type="submit" class="">Edit Product</button>
         </form>
 
         <div class="manager">
@@ -59,7 +60,7 @@
         <div class="overlay"></div>
 
         <header>
-            <nav class="navbar navbar-expand-lg  fixed-top p-1">
+            <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 15;" class="navbar navbar-expand-lg  ">
                 <div class="container con1">
                     <a class="navbar-brand logo" href="#">shop</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -102,7 +103,7 @@
                                         <li><a class="dropdown-item" href="#Categories">CAT 3</a></li>
                                     </ul>
                                 </li>
-                              
+
 
 
                             </ul>
@@ -610,6 +611,8 @@
     <script src="js/script.js"></script>
     <script src="js/admin.js"></script>
     <script src="Bootstrap-short/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>
