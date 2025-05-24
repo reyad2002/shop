@@ -21,36 +21,8 @@ PrevBut.addEventListener("click", () => {
 
 
 // ///////////////////////////////////////////////
-let addProductForm = document.getElementById("addProductForm")
 
-document.addEventListener('keydown', function (e) {
-    // Normalize the key for lowercase
-    const key = e.key.toLowerCase();
-
-    if (e.ctrlKey && key === 'a') {
-        e.preventDefault();
-        addProductForm.style.display = "flex";
-    }
-});
-document.addEventListener('keydown', function (e) {
-    // Normalize the key for lowercase
-    const key = e.key.toLowerCase();
-
-    if (e.ctrlKey && key === 'z') {
-        e.preventDefault();
-        addProductForm.style.display = "none";
-    }
-});
 // /////////////////////////////////////////////////////
-let name = document.getElementById("name");
-let email = document.getElementById("email");
-let submit = document.getElementById("submit");
-submit.addEventListener("click", () => {
-    if (name.value.toLowerCase() === "admin" && email.value.toLowerCase() === "admin@gmail.com") {
-        addProductForm.style.display = "flex";
-
-    }
-})
 
 
 let products = [{
@@ -171,13 +143,51 @@ addProductBtn.addEventListener("click", (event) => {
 
 })
 // /////////////////////////////////////
+// open add product form using ctrl + a
+let addProductForm = document.getElementById("addProductForm")
+document.addEventListener('keydown', function (e) {
+    const key = e.key.toLowerCase();
+
+    if (e.ctrlKey && key === 'a') {
+        e.preventDefault();
+        addProductForm.style.display = "flex";
+    }
+});
+// close add product form using ctrl + z
+document.addEventListener('keydown', function (e) {
+    // Normalize the key for lowercase
+    const key = e.key.toLowerCase();
+
+    if (e.ctrlKey && key === 'z') {
+        e.preventDefault();
+        addProductForm.style.display = "none";
+    }
+});
+// admin login
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let submit = document.getElementById("submit");
+submit.addEventListener("click", () => {
+    if (name.value.toLowerCase() === "admin" && email.value.toLowerCase() === "admin@gmail.com") {
+        addProductForm.style.display = "flex";
+
+    }
+})
+
+
+// close add product form
 closeForm.addEventListener("click", () => {
     addProductForm.style.display = "none"
 })
 
+// open manager 
 document.getElementById("manager").addEventListener("click", () => {
     document.querySelector(".manager").style.display = "block"
 
+})
+// close manager
+closeManager.addEventListener("click", () => {
+    document.querySelector(".manager").style.display = "none"
 })
 // //////////////////////////////////////////
 // add products to the manager
@@ -207,6 +217,6 @@ function createManager() {
 }
 createManager()
 // //////////////////////////////
-closeManager.addEventListener("click", () => {
-    document.querySelector(".manager").style.display = "none"
-})
+
+// ////////////////////////////////
+// delete products
