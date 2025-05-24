@@ -64,7 +64,7 @@ let products = [{
     price: "180",
     image: "img/product-thumb-5.png",
     discount: "20",
-    star: false,
+    star: true,
 },
 {
     id: 6,
@@ -72,7 +72,7 @@ let products = [{
     price: "830",
     image: "img/product-thumb-6.png",
     discount: "25",
-    star: false,
+    star: true,
 },
 {
     id: 7,
@@ -80,7 +80,7 @@ let products = [{
     price: "380",
     image: "img/product-thumb-1.png",
     discount: "70",
-    star: false,
+    star: true,
 },
 {
     id: 8,
@@ -88,11 +88,42 @@ let products = [{
     price: "670",
     image: "img/product-thumb-6.png",
     discount: "60",
-    star: false,
+    star: true,
 },
 ]
 let star = [
-
+    {
+        id: 8,
+        name: "product name",
+        price: "670",
+        image: "img/product-thumb-6.png",
+        discount: "60",
+        star: true,
+    },
+    {
+        id: 7,
+        name: "product name",
+        price: "380",
+        image: "img/product-thumb-1.png",
+        discount: "70",
+        star: true,
+    },
+    {
+        id: 6,
+        name: "product name",
+        price: "830",
+        image: "img/product-thumb-6.png",
+        discount: "25",
+        star: true,
+    },
+    {
+        id: 5,
+        name: "product name",
+        price: "180",
+        image: "img/product-thumb-5.png",
+        discount: "20",
+        star: true,
+    },
 ]
 
 function createProd() {
