@@ -21,14 +21,24 @@ PrevBut.addEventListener("click", () => {
 
 
 // ///////////////////////////////////////////////
-// Try to load products from localStorage; otherwise use defaults
+// localStorage
 let products = JSON.parse(localStorage.getItem("products")) || [
     { id:1,  name:"product name", price:"500", image:"img/product-thumb-1.png", discount:"30", star:false },
-    { id:2,  name:"product name", price:"250", image:"img/product-thumb-2.png", discount:"10", star:false },
+    { id:2,  name:"product name", price:"320", image:"img/product-thumb-2.png", discount:"10", star:false },
+    { id:3,  name:"product name", price:"780", image:"img/product-thumb-3.png", discount:"50", star:false },
+    { id:4,  name:"product name", price:"240", image:"img/product-thumb-4.png", discount:"30", star:false },
     /* … etc … */
+  ];
+  let star = JSON.parse(localStorage.getItem("star")) || [
+    { id:1,  name:"product name", price:"500", image:"img/product-thumb-1.png", discount:"30", star:true },
+    { id:2,  name:"product name", price:"320", image:"img/product-thumb-2.png", discount:"10", star:true },
+    { id:3,  name:"product name", price:"780", image:"img/product-thumb-3.png", discount:"50", star:true },
+    { id:4,  name:"product name", price:"240", image:"img/product-thumb-4.png", discount:"30", star:true },
   ];
   function saveProducts() {
     localStorage.setItem("products", JSON.stringify(products));
+    localStorage.setItem("star", JSON.stringify(star));
+
   }  
   
  
@@ -101,40 +111,40 @@ let products = JSON.parse(localStorage.getItem("products")) || [
 //     star: true,
 // },
 // ]
-let star = [
-    {
-        id: 8,
-        name: "product name",
-        price: "670",
-        image: "img/product-thumb-6.png",
-        discount: "60",
-        star: true,
-    },
-    {
-        id: 7,
-        name: "product name",
-        price: "380",
-        image: "img/product-thumb-1.png",
-        discount: "70",
-        star: true,
-    },
-    {
-        id: 6,
-        name: "product name",
-        price: "830",
-        image: "img/product-thumb-6.png",
-        discount: "25",
-        star: true,
-    },
-    {
-        id: 5,
-        name: "product name",
-        price: "180",
-        image: "img/product-thumb-5.png",
-        discount: "20",
-        star: true,
-    },
-]
+// let star = [
+//     {
+//         id: 8,
+//         name: "product name",
+//         price: "670",
+//         image: "img/product-thumb-6.png",
+//         discount: "60",
+//         star: true,
+//     },
+//     {
+//         id: 7,
+//         name: "product name",
+//         price: "380",
+//         image: "img/product-thumb-1.png",
+//         discount: "70",
+//         star: true,
+//     },
+//     {
+//         id: 6,
+//         name: "product name",
+//         price: "830",
+//         image: "img/product-thumb-6.png",
+//         discount: "25",
+//         star: true,
+//     },
+//     {
+//         id: 5,
+//         name: "product name",
+//         price: "180",
+//         image: "img/product-thumb-5.png",
+//         discount: "20",
+//         star: true,
+//     },
+// ]
 
 function createProd() {
     document.getElementById("con5-allItems").innerHTML = ""
