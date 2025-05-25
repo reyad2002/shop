@@ -30,10 +30,7 @@ let products = JSON.parse(localStorage.getItem("products")) || [
     /* … etc … */
   ];
   let star = JSON.parse(localStorage.getItem("star")) || [
-    { id:1,  name:"product name", price:"500", image:"img/product-thumb-1.png", discount:"30", star:true },
-    { id:2,  name:"product name", price:"320", image:"img/product-thumb-2.png", discount:"10", star:true },
-    { id:3,  name:"product name", price:"780", image:"img/product-thumb-3.png", discount:"50", star:true },
-    { id:4,  name:"product name", price:"240", image:"img/product-thumb-4.png", discount:"30", star:true },
+    
   ];
   function saveProducts() {
     localStorage.setItem("products", JSON.stringify(products));
