@@ -245,8 +245,22 @@ nav {
     /* background-color: #edc306; */
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
-
+.arrow-sec-1{
+    animation: arrow-sec-1 1.5s ease-in-out infinite;
+}
+@keyframes arrow-sec-1 {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 .sec-1-btn {
     padding: .7rem 1.2rem;
     border-radius: 25px;
@@ -418,7 +432,22 @@ nav {
     font-weight: bold;
     color: #000000;
 }
-
+.ReadMore{
+    animation: ReadMore 1.5s ease-in-out infinite ;
+}
+@keyframes ReadMore {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.9);
+        background-color: #2c9a0028;
+        
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 .con3-text h2::after {
     content: '';
     position: absolute;

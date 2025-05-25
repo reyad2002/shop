@@ -395,3 +395,14 @@ editProductBtn.addEventListener("click", (event) => {
 })
 editProductBtn.style.display = "none"
 
+// /////////////////////////////////
+// ReadMore BTN
+let ReadMore = document.getElementById("ReadMore")
+ReadMore.addEventListener("mouseover", () => {
+    ReadMore.style.animationPlayState = "paused"
+})
+ReadMore.addEventListener("mouseout", () => {
+    ReadMore.style.animationPlayState = "running"
+})
+
+
