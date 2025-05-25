@@ -351,12 +351,17 @@ function starProduct(index) {
 }
 AddToManager()
 // //////////////////////////////
+
+
 // delete products
 function deleteProduct(index) {
     products.splice(index, 1)
+    // star.splice(star.indexOf(products[index]), 1)
     saveProducts();          // ← save
     AddToManager()
     createProd()
+   
+
 }
 // /////////////////////////////
 // edit products
