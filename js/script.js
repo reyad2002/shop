@@ -295,6 +295,7 @@ closeForm.addEventListener("click", () => {
 })
 
 // open manager 
+addProductForm.style.display = "none"
 document.getElementById("manager").addEventListener("click", () => {
     document.querySelector(".manager").style.display = "block"
 
@@ -316,7 +317,9 @@ function AddToManager() {
         }
         let discountPrice = item.price - (item.price * item.discount / 100)
         document.querySelector(".manager-content").innerHTML += `
+
         <div class="item-add">
+        <div class="headsec">
         <div class="img"><img src="${item.image}" alt="">
         
         </div>
@@ -326,11 +329,13 @@ function AddToManager() {
         <p>Price:${item.price}</p>
         <p>Discount:${item.discount}%</p>
         <p>Final Price:${discountPrice}</p>
+        </div>
+        </div>
+
         <div class="controler">
         <button onclick="deleteProduct(${index})" class="btn btn-danger">Delete</button>
         <button onclick="editProduct(${index})" class="btn btn-primary">Edit</button>
         ${star}
-        </div>
         </div>
     </div>`
 
